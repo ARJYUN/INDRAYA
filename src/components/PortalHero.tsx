@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FloatingFlag } from './FloatingFlag';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -299,6 +300,11 @@ export const PortalHero: React.FC<PortalHeroProps> = ({ onScrollTriggerReady }) 
               />
             </div>
           </div>
+        </div>
+
+        {/* Floating Flag with continuous wind wave physics */}
+        <div className="absolute top-16 sm:top-20 md:top-24 right-3 sm:right-8 md:right-14 lg:right-20 z-20 pointer-events-none scale-75 sm:scale-90 md:scale-100 origin-top-right">
+          <FloatingFlag />
         </div>
 
         {/* Floating Header Banner (Reveals as campus view opens) */}
