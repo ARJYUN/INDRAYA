@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         ml: ['"Noto Sans Malayalam"', '"Manjari"', '"Nirmala UI"', 'sans-serif'],
         ui: ['"Sora"', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       boxShadow: {
         'glass': '0 10px 30px rgba(20, 60, 160, 0.14)',

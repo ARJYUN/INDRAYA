@@ -44,8 +44,8 @@ export const App: React.FC = () => {
         <PortalHero onScrollTriggerReady={handleScrollTriggerReady} />
 
         {/* Sections replicated from https://indraya.vercel.app/ */}
-        <AboutUnion />
         <CollegeSection />
+        <AboutUnion />
         <EventsSection />
         <GallerySection />
         <VoiceSection />

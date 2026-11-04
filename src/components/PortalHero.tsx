@@ -308,7 +308,7 @@ export const PortalHero: React.FC<PortalHeroProps> = ({ onScrollTriggerReady }) 
         >
           <div ref={extraRef} className="opacity-0 font-ml">
             <h1 className="m-0 font-black text-[clamp(5rem,min(22vw,14vh),10.5rem)] leading-[0.98] text-navy drop-shadow-lg tracking-tight">
-              ഇന്ദ്രയ 2.O
+              ഇന്ദ്രയ
             </h1>
             <p className="m-0 mt-1 font-extrabold text-[clamp(1.65rem,min(6.8vw,3.8vh),3rem)] tracking-normal text-navy/95 drop-shadow-md">
               കോളേജ് യൂണിയൻ

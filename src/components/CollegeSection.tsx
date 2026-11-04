@@ -1,89 +1,137 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, Building2, Users } from 'lucide-react';
-import { COLLEGE_STATS, COLLEGE_INFO } from '../data/unionData';
-
-const statIcons = {
-  GraduationCap,
-  Award,
-  Building2,
-  Users,
-};
+import { GraduationCap, Trophy, Building2, Users } from 'lucide-react';
+import { COLLEGE_INFO } from '../data/unionData';
 
 export const CollegeSection: React.FC = () => {
   return (
-    <section id="college" className="py-32 px-6 bg-[#050505]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Main Institution Card */}
-          <div className="md:col-span-7 bg-zinc-900 rounded-[3rem] p-12 border border-white/5 flex flex-col justify-between overflow-hidden relative group min-h-[400px]">
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                An Institution <br />
-                of <span className="text-blue-500 italic font-serif">Excellence.</span>
-              </h2>
-              <p className="text-gray-400 text-lg max-w-md leading-relaxed">
-                {COLLEGE_INFO.description}
-              </p>
+    <section id="college" className="relative w-full overflow-hidden bg-[#dceafb]">
+      {/* Anchor for #about navigation */}
+      <div id="about" className="absolute -top-24" />
+
+      {/* Background Illustration Artwork */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src="/assets/about.webp"
+          alt="NSS College of Engineering Campus"
+          className="w-full h-full object-cover object-[70%_center] md:object-center select-none pointer-events-none"
+        />
+      </div>
+
+      {/* Main Content Overlay - Positioned on the left open-sky area */}
+      <div className="relative z-10 w-full min-h-[580px] sm:min-h-[660px] md:min-h-[740px] lg:min-h-[820px] xl:min-h-[880px] flex items-center py-16 sm:py-20 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-14 lg:px-20 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="max-w-xl lg:max-w-2xl max-md:bg-white/45 max-md:backdrop-blur-sm max-md:p-6 max-md:rounded-3xl max-md:shadow-sm"
+          >
+            {/* Three Blue Angled Burst Rays Icon */}
+            <div className="flex items-center -ml-1 sm:-ml-2 mb-1 sm:mb-2 text-[#0a2f8f]">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 50 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-9 h-9 sm:w-12 sm:h-12"
+              >
+                <path d="M14 9L23 19" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                <path d="M5 24L18 25" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                <path d="M8 39L20 32" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+              </svg>
             </div>
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] group-hover:bg-blue-500/10 transition-colors" />
-          </div>
 
-          {/* Campus Image Card */}
-          <div className="md:col-span-5 relative group overflow-hidden rounded-[3rem] border border-white/5 min-h-[400px]">
-            <a
-              href={COLLEGE_INFO.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full h-full absolute inset-0 group"
+            {/* Main Heading */}
+            <h2 className="font-serif font-black text-[#021849] text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[0.98] tracking-tight">
+              An Institution <br />
+              <span className="font-serif font-normal text-[#021849]">of </span>
+              <span className="font-serif italic font-black text-[#021849]">Excellence.</span>
+            </h2>
+
+            {/* Tapered Curved Underline Swoosh */}
+            <svg
+              viewBox="0 0 360 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-56 sm:w-72 md:w-88 h-3 text-[#113596] mt-2 sm:mt-3 mb-5 sm:mb-7"
             >
-              <img
-                src={COLLEGE_INFO.campusImage}
-                alt="NSSCE Campus"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
+              <path
+                d="M2 9 C 85 1, 260 1, 358 6 C 260 11, 85 12, 2 9 Z"
+                fill="currentColor"
+                opacity="0.9"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-              <div className="absolute bottom-8 left-8">
-                <p className="text-white/60 text-xs font-black uppercase tracking-[0.3em]">
-                  NSSCE Palakkad
-                </p>
-                <h4 className="text-white text-2xl font-bold">125 Acres of Greenery</h4>
-              </div>
-            </a>
-          </div>
+            </svg>
 
-          {/* 4 Stat Cards */}
-          <div className="md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {COLLEGE_STATS.map((stat, idx) => {
-              const IconComp = statIcons[stat.iconName] || GraduationCap;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-zinc-900/50 border border-white/5 rounded-[2.5rem] p-8 flex flex-col items-center justify-center text-center group"
-                >
-                  <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.color} p-4 mb-6 opacity-80 group-hover:opacity-100 transition-opacity flex items-center justify-center`}
-                  >
-                    <IconComp className="text-white w-full h-full" />
+            {/* Descriptive Paragraph */}
+            <p className="text-[#0a235c] text-sm sm:text-base lg:text-[1.05rem] leading-relaxed font-medium max-w-lg mb-8 sm:mb-10">
+              {COLLEGE_INFO.description}
+            </p>
+
+            {/* 4 Stats Translucent Glass Card */}
+            <div className="bg-white/75 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-[0_12px_36px_rgba(2,24,73,0.08)] border border-white/80 max-w-lg lg:max-w-xl">
+              <div className="grid grid-cols-4 items-center divide-x divide-[#0d2f81]/15">
+                {/* 1. NBA Accredited */}
+                <div className="flex flex-col items-center justify-center px-1 sm:px-2.5 text-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 rounded-full bg-[#0d2f81] text-white flex items-center justify-center shadow-md mb-2 sm:mb-2.5">
+                    <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.2} />
                   </div>
-                  <h3 className="text-4xl font-bold text-white mb-2 tracking-tighter">
-                    {stat.number}
-                  </h3>
-                  <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
+                  <span className="font-sans font-black text-[#021849] text-xs sm:text-base lg:text-lg uppercase tracking-tight leading-none">
+                    NBA
+                  </span>
+                  <span className="font-sans font-bold text-[#0d2f81] text-[7.5px] sm:text-[9px] lg:text-[10px] tracking-wider uppercase mt-1 leading-tight">
+                    ACCREDITED
+                  </span>
+                </div>
+
+                {/* 2. 8th KIRF Rank */}
+                <div className="flex flex-col items-center justify-center px-1 sm:px-2.5 text-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 rounded-full bg-[#0d2f81] text-white flex items-center justify-center shadow-md mb-2 sm:mb-2.5">
+                    <Trophy className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-sans font-black text-[#021849] text-xs sm:text-base lg:text-lg tracking-tight leading-none">
+                    8th
+                  </span>
+                  <span className="font-sans font-bold text-[#0d2f81] text-[7.5px] sm:text-[9px] lg:text-[10px] tracking-wider uppercase mt-1 leading-tight">
+                    KIRF RANK
+                  </span>
+                </div>
+
+                {/* 3. 5th KIRF Placement */}
+                <div className="flex flex-col items-center justify-center px-1 sm:px-2.5 text-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 rounded-full bg-[#0d2f81] text-white flex items-center justify-center shadow-md mb-2 sm:mb-2.5">
+                    <Building2 className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-sans font-black text-[#021849] text-xs sm:text-base lg:text-lg tracking-tight leading-none">
+                    5th
+                  </span>
+                  <span className="font-sans font-bold text-[#0d2f81] text-[7.5px] sm:text-[9px] lg:text-[10px] tracking-wider uppercase mt-1 leading-tight">
+                    KIRF PLACEMENT
+                  </span>
+                </div>
+
+                {/* 4. 3000+ Students */}
+                <div className="flex flex-col items-center justify-center px-1 sm:px-2.5 text-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 rounded-full bg-[#0d2f81] text-white flex items-center justify-center shadow-md mb-2 sm:mb-2.5">
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-sans font-black text-[#021849] text-xs sm:text-base lg:text-lg tracking-tight leading-none">
+                    3000+
+                  </span>
+                  <span className="font-sans font-bold text-[#0d2f81] text-[7.5px] sm:text-[9px] lg:text-[10px] tracking-wider uppercase mt-1 leading-tight">
+                    STUDENTS
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Cinematic bottom gradient blending into the dark sections below */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#050505]/30 to-[#050505] pointer-events-none" />
     </section>
   );
 };
-
