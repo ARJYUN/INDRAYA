@@ -4,9 +4,8 @@ import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { Preloader } from './components/Preloader';
 import { Navbar } from './components/Navbar';
 import { PortalHero } from './components/PortalHero';
-import { CampusTransition } from './components/CampusTransition';
-import { CollegeSection } from './components/CollegeSection';
 import { AboutUnion } from './components/AboutUnion';
+import { CollegeSection } from './components/CollegeSection';
 import { EventsSection } from './components/EventsSection';
 import { GallerySection } from './components/GallerySection';
 import { VoiceSection } from './components/VoiceSection';
@@ -44,10 +43,7 @@ export const App: React.FC = () => {
         {/* 3D Gate Entrance & Campus Zoom Hero (Kept Untouched) */}
         <PortalHero onScrollTriggerReady={handleScrollTriggerReady} />
 
-        {/* Seamless Atmospheric Connector from Portal to Campus */}
-        <CampusTransition />
-
-        {/* Institution About Section */}
+        {/* Sections replicated from https://indraya.vercel.app/ */}
         <CollegeSection />
         <AboutUnion />
         <EventsSection />

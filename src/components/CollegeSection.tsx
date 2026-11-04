@@ -16,8 +16,6 @@ export const CollegeSection: React.FC = () => {
           alt="NSS College of Engineering Campus"
           className="w-full h-full object-cover object-[70%_center] md:object-center select-none pointer-events-none"
         />
-        {/* Soft top sky dissolve to ensure continuous atmospheric blend with portal transition above */}
-        <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#dceafb] via-[#dceafb]/60 to-transparent pointer-events-none" />
       </div>
 
       {/* Main Content Overlay - Positioned on the left open-sky area */}
