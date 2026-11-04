@@ -54,8 +54,8 @@ export const CollegeSection: React.FC = () => {
               {COLLEGE_INFO.description}
             </p>
 
-            {/* 4 Stats Transparent Container */}
-            <div className="bg-transparent rounded-2xl sm:rounded-3xl p-1 sm:p-2 max-w-lg lg:max-w-xl">
+            {/* 4 Stats Transparent Container - Shifted leftward */}
+            <div className="bg-transparent rounded-2xl sm:rounded-3xl p-1 sm:p-2 max-w-lg lg:max-w-xl -translate-x-3 sm:-translate-x-6 lg:-translate-x-10">
               <div className="grid grid-cols-4 items-center divide-x divide-[#0d2f81]/20">
                 {/* 1. NBA Accredited */}
                 <div className="flex flex-col items-center justify-center px-1 sm:px-2.5 text-center">
