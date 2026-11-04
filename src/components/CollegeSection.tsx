@@ -28,22 +28,6 @@ export const CollegeSection: React.FC = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="max-w-xl lg:max-w-2xl max-md:bg-white/45 max-md:backdrop-blur-sm max-md:p-6 max-md:rounded-3xl max-md:shadow-sm"
           >
-            {/* Three Blue Angled Burst Rays Icon */}
-            <div className="flex items-center -ml-1 sm:-ml-2 mb-1 sm:mb-2 text-[#0a2f8f]">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-9 h-9 sm:w-12 sm:h-12"
-              >
-                <path d="M14 9L23 19" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                <path d="M5 24L18 25" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                <path d="M8 39L20 32" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-              </svg>
-            </div>
-
             {/* Main Heading */}
             <h2 className="font-serif font-black text-[#021849] text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[0.98] tracking-tight">
               An Institution <br />
