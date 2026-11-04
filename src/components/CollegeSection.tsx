@@ -26,7 +26,7 @@ export const CollegeSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="max-w-xl lg:max-w-2xl max-md:bg-white/20 max-md:backdrop-blur-sm max-md:p-6 max-md:rounded-3xl max-md:shadow-sm"
+            className="max-w-xl lg:max-w-2xl"
           >
             {/* Main Heading */}
             <h2 className="font-serif font-black text-[#021849] text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[0.98] tracking-tight">
@@ -54,9 +54,9 @@ export const CollegeSection: React.FC = () => {
               {COLLEGE_INFO.description}
             </p>
 
-            {/* 4 Stats Translucent Glass Card */}
-            <div className="bg-white/25 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-[0_8px_32px_rgba(2,24,73,0.05)] border border-white/40 max-w-lg lg:max-w-xl">
-              <div className="grid grid-cols-4 items-center divide-x divide-[#0d2f81]/15">
+            {/* 4 Stats Transparent Container */}
+            <div className="bg-transparent rounded-2xl sm:rounded-3xl p-1 sm:p-2 max-w-lg lg:max-w-xl">
+              <div className="grid grid-cols-4 items-center divide-x divide-[#0d2f81]/20">
                 {/* 1. NBA Accredited */}
                 <div className="flex flex-col items-center justify-center px-1 sm:px-2.5 text-center">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 rounded-full bg-[#0d2f81] text-white flex items-center justify-center shadow-md mb-2 sm:mb-2.5">
