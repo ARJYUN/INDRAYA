@@ -19,7 +19,7 @@ export const CollegeSection: React.FC = () => {
       </div>
 
       {/* Main Content Overlay - Positioned on the left open-sky area */}
-      <div className="relative z-10 w-full min-h-[580px] sm:min-h-[660px] md:min-h-[740px] lg:min-h-[820px] xl:min-h-[880px] flex items-center py-16 sm:py-20 md:py-24">
+      <div className="relative z-10 w-full flex items-center py-12 sm:py-16 md:py-20 lg:py-22">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-14 lg:px-20 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -29,7 +29,7 @@ export const CollegeSection: React.FC = () => {
             className="max-w-xl lg:max-w-2xl"
           >
             {/* Main Heading */}
-            <h2 className="font-serif font-black text-[#021849] text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[0.98] tracking-tight">
+            <h2 className="font-serif font-black text-[#021849] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.02] tracking-tight">
               An Institution <br />
               <span className="font-serif font-normal text-[#021849]">of </span>
               <span className="font-serif italic font-black text-[#021849]">Excellence.</span>
@@ -40,7 +40,7 @@ export const CollegeSection: React.FC = () => {
               viewBox="0 0 360 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-56 sm:w-72 md:w-88 h-3 text-[#113596] mt-2 sm:mt-3 mb-5 sm:mb-7"
+              className="w-48 sm:w-60 md:w-72 h-2.5 sm:h-3 text-[#113596] mt-2 sm:mt-2.5 mb-4 sm:mb-6"
             >
               <path
                 d="M2 9 C 85 1, 260 1, 358 6 C 260 11, 85 12, 2 9 Z"

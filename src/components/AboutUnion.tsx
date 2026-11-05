@@ -128,17 +128,17 @@ export const AboutUnion: React.FC = React.memo(() => {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-18 xl:px-24">
+      <div className="relative z-10 w-full flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 lg:py-14 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         {/* Title Block with tapered swoosh underline */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="flex flex-col items-center text-center mb-8 sm:mb-10 md:mb-12"
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex flex-col items-center text-center mb-4 sm:mb-6 md:mb-7"
         >
-          {/* Title Text */}
-          <h2 className="font-serif italic font-black text-[#021849] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-none">
+          {/* Title Text - Scaled down for better background visibility */}
+          <h2 className="font-serif italic font-black text-[#021849] text-2xl sm:text-3xl md:text-[2.2rem] lg:text-[2.5rem] tracking-tight leading-none">
             Union Members
           </h2>
 
@@ -147,7 +147,7 @@ export const AboutUnion: React.FC = React.memo(() => {
             viewBox="0 0 360 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-48 sm:w-64 md:w-80 lg:w-[26rem] h-2.5 sm:h-3 md:h-3.5 text-[#0d2f81] mt-1.5 sm:mt-2 select-none"
+            className="w-36 sm:w-48 md:w-56 lg:w-64 h-2 sm:h-2.5 text-[#0d2f81] mt-1 sm:mt-1.5 select-none"
             aria-hidden="true"
           >
             <path
@@ -163,13 +163,13 @@ export const AboutUnion: React.FC = React.memo(() => {
             - Desktop (>= md): 10-column grid (Row 1: 5 cards across; Row 2: 4 cards centered with col-start-2)
         */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl"
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="w-full max-w-3xl md:max-w-4xl lg:max-w-[54rem] xl:max-w-[62rem]"
         >
-          <div className="grid grid-cols-3 md:grid-cols-10 gap-2.5 sm:gap-3.5 md:gap-4 lg:gap-5 xl:gap-6 justify-items-center items-end">
+          <div className="grid grid-cols-3 md:grid-cols-10 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 xl:gap-4.5 justify-items-center items-end">
             {MEMBERS_DATA.map((member, index) => {
               // On desktop 10-col grid:
               // Index 0..4 (Row 1): col-span-2 each (5 cards = 10 cols)
@@ -184,10 +184,10 @@ export const AboutUnion: React.FC = React.memo(() => {
                 <div
                   key={member.id}
                   onClick={() => handleCardClick(member)}
-                  className={`group w-full max-w-[170px] sm:max-w-[190px] md:max-w-none flex flex-col items-center cursor-pointer select-none transition-transform duration-300 ease-out hover:-translate-y-1.5 transform-gpu ${colClass}`}
+                  className={`group w-full max-w-[130px] sm:max-w-[155px] md:max-w-none flex flex-col items-center cursor-pointer select-none transition-transform duration-300 ease-out hover:-translate-y-1.5 transform-gpu ${colClass}`}
                 >
                   {/* Arched Photo Frame (Dome top, vertical sides, dark blue outline) */}
-                  <div className="relative aspect-[3/3.7] w-full rounded-t-[36px] sm:rounded-t-[48px] md:rounded-t-[56px] lg:rounded-t-[68px] overflow-hidden border-[2.2px] sm:border-[2.6px] border-[#0a235c] bg-[#e6f1fd]/80 shadow-sm transition-all duration-300 group-hover:shadow-[0_8px_20px_rgba(10,35,92,0.25)]">
+                  <div className="relative aspect-[3/3.7] w-full rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[48px] lg:rounded-t-[58px] overflow-hidden border-[2px] sm:border-[2.4px] border-[#0a235c] bg-[#e6f1fd]/80 shadow-sm transition-all duration-300 group-hover:shadow-[0_8px_20px_rgba(10,35,92,0.25)]">
                     <img
                       src={member.image}
                       alt={`${member.name} - ${member.position}`}
@@ -206,11 +206,11 @@ export const AboutUnion: React.FC = React.memo(() => {
                   </div>
 
                   {/* Dark Blue Base / Plinth with Member Name & Position */}
-                  <div className="relative z-10 -mt-2 sm:-mt-2.5 w-[104%] sm:w-[106%] px-1.5 sm:px-2.5 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-[#0a235c] text-white shadow-[0_4px_12px_rgba(10,35,92,0.35)] border border-[#0d2f81]/40 flex flex-col items-center justify-center text-center transition-all duration-300 group-hover:bg-[#0c2e76] group-hover:shadow-[0_6px_18px_rgba(10,35,92,0.5)]">
-                    <span className="font-serif font-bold text-white text-[10px] sm:text-xs md:text-[11px] lg:text-[12.5px] xl:text-[13.5px] leading-tight tracking-tight block truncate w-full">
+                  <div className="relative z-10 -mt-2 sm:-mt-2.5 w-[104%] sm:w-[106%] px-1 sm:px-2 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-[#0a235c] text-white shadow-[0_4px_12px_rgba(10,35,92,0.35)] border border-[#0d2f81]/40 flex flex-col items-center justify-center text-center transition-all duration-300 group-hover:bg-[#0c2e76] group-hover:shadow-[0_6px_18px_rgba(10,35,92,0.5)]">
+                    <span className="font-serif font-bold text-white text-[9.5px] sm:text-[11px] md:text-[10px] lg:text-[11.5px] xl:text-[12.5px] leading-tight tracking-tight block truncate w-full">
                       {member.name}
                     </span>
-                    <span className="font-sans font-semibold text-blue-200 text-[7px] sm:text-[8.5px] md:text-[8px] lg:text-[9.5px] xl:text-[10.5px] uppercase tracking-wider block mt-0.5 leading-tight truncate w-full">
+                    <span className="font-sans font-semibold text-blue-200 text-[6.5px] sm:text-[8px] md:text-[7.5px] lg:text-[8.5px] xl:text-[9.5px] uppercase tracking-wider block mt-0.5 leading-tight truncate w-full">
                       {member.position}
                     </span>
                   </div>
@@ -222,7 +222,7 @@ export const AboutUnion: React.FC = React.memo(() => {
       </div>
 
       {/* Cinematic bottom gradient blending the green bushes into the dark sections below */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-36 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 md:h-24 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505] pointer-events-none" />
 
       {/* Quick Profile Modal when a Member is clicked */}
       <AnimatePresence>
