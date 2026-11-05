@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Users, GraduationCap, CalendarDays, Maximize2, MessageSquare, Menu, X } from 'lucide-react';
 import { Dock } from './Dock';
+import { getLenis } from '../hooks/useSmoothScroll';
 
 interface NavbarProps {
   scrollTriggerInstance?: any;
@@ -29,11 +30,23 @@ export const Navbar: React.FC<NavbarProps> = () => {
   ];
 
   const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    const lenis = getLenis();
     if (href === '#' || href === '#home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      const el = document.getElementById(href.slice(1));
-      if (el) {
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    const targetId = href.startsWith('#') ? href.slice(1) : href;
+    const el = document.getElementById(targetId);
+    if (el) {
+      if (lenis) {
+        lenis.scrollTo(el, { duration: 1.2, offset: -20 });
+      } else {
         el.scrollIntoView({ behavior: 'smooth' });
       }
     }

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Phone,
   X,
@@ -100,6 +101,14 @@ const MEMBERS_DATA: MemberData[] = [
 export const AboutUnion: React.FC = React.memo(() => {
   const [selectedMember, setSelectedMember] = useState<MemberData | null>(null);
 
+  // Refresh ScrollTrigger so smooth-scrolling bounds stay in sync
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleCardClick = (member: MemberData) => {
     setSelectedMember(member);
   };
@@ -110,23 +119,23 @@ export const AboutUnion: React.FC = React.memo(() => {
       <div id="team" className="absolute -top-24" />
 
       {/* Background Illustrated Artwork */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
         <img
           src="/assets/team.webp"
           alt="Indraya Union Members Campus Backdrop"
-          className="w-full h-full object-cover object-center select-none pointer-events-none"
+          className="w-full h-full object-cover object-center select-none"
         />
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-10 w-full min-h-[640px] sm:min-h-[720px] md:min-h-[800px] lg:min-h-[860px] flex flex-col items-center justify-between pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-24 sm:pb-32 md:pb-40 px-4 sm:px-8 md:px-12 lg:px-18 xl:px-24">
+      <div className="relative z-10 w-full flex flex-col items-center justify-center py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-12 lg:px-18 xl:px-24">
         {/* Title Block with tapered swoosh underline */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="flex flex-col items-center text-center mb-8 sm:mb-11 md:mb-13"
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="flex flex-col items-center text-center mb-8 sm:mb-10 md:mb-12"
         >
           {/* Title Text */}
           <h2 className="font-serif italic font-black text-[#021849] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-none">
@@ -153,7 +162,13 @@ export const AboutUnion: React.FC = React.memo(() => {
             - Mobile (< md): 3 columns x 3 rows (balanced 3x3)
             - Desktop (>= md): 10-column grid (Row 1: 5 cards across; Row 2: 4 cards centered with col-start-2)
         */}
-        <div className="w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl"
+        >
           <div className="grid grid-cols-3 md:grid-cols-10 gap-2.5 sm:gap-3.5 md:gap-4 lg:gap-5 xl:gap-6 justify-items-center items-end">
             {MEMBERS_DATA.map((member, index) => {
               // On desktop 10-col grid:
@@ -166,15 +181,10 @@ export const AboutUnion: React.FC = React.memo(() => {
                   : 'col-span-1 md:col-span-2';
 
               return (
-                <motion.div
+                <div
                   key={member.id}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.04 }}
-                  whileHover={{ y: -6 }}
                   onClick={() => handleCardClick(member)}
-                  className={`group w-full max-w-[170px] sm:max-w-[190px] md:max-w-none flex flex-col items-center cursor-pointer select-none ${colClass}`}
+                  className={`group w-full max-w-[170px] sm:max-w-[190px] md:max-w-none flex flex-col items-center cursor-pointer select-none transition-transform duration-300 ease-out hover:-translate-y-1.5 transform-gpu ${colClass}`}
                 >
                   {/* Arched Photo Frame (Dome top, vertical sides, dark blue outline) */}
                   <div className="relative aspect-[3/3.7] w-full rounded-t-[36px] sm:rounded-t-[48px] md:rounded-t-[56px] lg:rounded-t-[68px] overflow-hidden border-[2.2px] sm:border-[2.6px] border-[#0a235c] bg-[#e6f1fd]/80 shadow-sm transition-all duration-300 group-hover:shadow-[0_8px_20px_rgba(10,35,92,0.25)]">
@@ -183,7 +193,7 @@ export const AboutUnion: React.FC = React.memo(() => {
                       alt={`${member.name} - ${member.position}`}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover object-[center_16%] group-hover:scale-105 transition-transform duration-500 ease-out"
+                      className="w-full h-full object-cover object-[center_16%] group-hover:scale-105 transition-transform duration-300 ease-out"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src =
                           'https://via.placeholder.com/300x400?text=' +
@@ -204,15 +214,15 @@ export const AboutUnion: React.FC = React.memo(() => {
                       {member.position}
                     </span>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Cinematic bottom gradient blending the green bushes into the dark sections below */}
-      <div className="absolute bottom-0 left-0 right-0 h-28 sm:h-36 md:h-44 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-36 bg-gradient-to-b from-transparent via-[#050505]/40 to-[#050505] pointer-events-none" />
 
       {/* Quick Profile Modal when a Member is clicked */}
       <AnimatePresence>
