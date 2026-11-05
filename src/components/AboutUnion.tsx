@@ -3,10 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone,
   X,
-  Heart,
   MessageSquare,
-  Sparkles,
-  ArrowRight,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -18,7 +15,6 @@ interface MemberData {
   quote: string;
   traits: string[];
   phone?: string;
-  isVoice?: boolean;
 }
 
 const MEMBERS_DATA: MemberData[] = [
@@ -66,7 +62,7 @@ const MEMBERS_DATA: MemberData[] = [
     quote: 'Igniting the grand stage, spotlighting raw talents, and curating iconic cultural fests.',
     traits: ['Fest Director', 'Fine Arts', 'Stagecraft'],
   },
-  // Row 2 (5 members)
+  // Row 2 (4 members)
   {
     id: 'shifan',
     name: 'Mohammed Shifan C P',
@@ -99,28 +95,12 @@ const MEMBERS_DATA: MemberData[] = [
     quote: 'Building inclusive platforms and empowering every woman engineer at NSSCE.',
     traits: ['Inclusion', 'Student Care', 'Campus Voice'],
   },
-  {
-    id: 'voice',
-    name: 'Student Voice',
-    position: 'Heartbeat of NSSCE',
-    image: '',
-    isVoice: true,
-    quote: 'Have a suggestion, grievance, or club proposal? The College Union is on duty 24/7.',
-    traits: ['3000+ Students', 'Campus Democracy', 'Active Grievance Desk'],
-  },
 ];
 
 export const AboutUnion: React.FC = React.memo(() => {
   const [selectedMember, setSelectedMember] = useState<MemberData | null>(null);
 
   const handleCardClick = (member: MemberData) => {
-    if (member.isVoice) {
-      const voiceEl = document.getElementById('voice');
-      if (voiceEl) {
-        voiceEl.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-    }
     setSelectedMember(member);
   };
 
@@ -139,7 +119,7 @@ export const AboutUnion: React.FC = React.memo(() => {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-10 w-full min-h-[680px] sm:min-h-[760px] md:min-h-[820px] lg:min-h-[900px] flex flex-col items-center justify-between pt-14 sm:pt-18 md:pt-20 lg:pt-24 pb-28 sm:pb-36 md:pb-44 px-4 sm:px-8 md:px-14 lg:px-20 xl:px-28">
+      <div className="relative z-10 w-full min-h-[640px] sm:min-h-[720px] md:min-h-[800px] lg:min-h-[860px] flex flex-col items-center justify-between pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-24 sm:pb-32 md:pb-40 px-4 sm:px-8 md:px-12 lg:px-18 xl:px-24">
         {/* Title Block with 3 radiating dash marks and tapered swoosh underline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -202,37 +182,35 @@ export const AboutUnion: React.FC = React.memo(() => {
           </svg>
         </motion.div>
 
-        {/* 10 Arched Member Frames Grid (5 columns x 2 rows on desktop/tablet) */}
-        <div className="w-full max-w-5xl xl:max-w-6xl">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 sm:gap-4 md:gap-4 lg:gap-5 xl:gap-6 justify-items-center items-end">
-            {MEMBERS_DATA.map((member, index) => (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.04 }}
-                whileHover={{ y: -6 }}
-                onClick={() => handleCardClick(member)}
-                className="group w-full max-w-[170px] sm:max-w-[190px] md:max-w-none flex flex-col items-center cursor-pointer select-none"
-              >
-                {/* Arched Photo Frame (Dome top, vertical sides, dark blue outline) */}
-                <div className="relative aspect-[3/3.7] w-full rounded-t-[44px] sm:rounded-t-[54px] md:rounded-t-[60px] lg:rounded-t-[72px] overflow-hidden border-[2.2px] sm:border-[2.6px] border-[#0a235c] bg-[#e6f1fd]/80 shadow-sm transition-all duration-300 group-hover:shadow-[0_8px_20px_rgba(10,35,92,0.25)]">
-                  {member.isVoice ? (
-                    // Special 10th Card: Student Voice Emblem
-                    <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-b from-[#e0edfd] via-[#cce3fc] to-[#b3d4fa] group-hover:scale-105 transition-transform duration-500">
-                      <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#0a235c] text-white flex items-center justify-center shadow-md mb-2 group-hover:scale-110 transition-transform">
-                        <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-pink-300 fill-pink-300" />
-                      </div>
-                      <span className="font-serif font-black text-[#021849] text-[11px] sm:text-xs uppercase tracking-wider leading-tight">
-                        Student Voice
-                      </span>
-                      <span className="font-sans font-bold text-[#0d2f81] text-[8px] sm:text-[9px] uppercase tracking-widest mt-0.5">
-                        3000+ Strong
-                      </span>
-                    </div>
-                  ) : (
-                    // Real Leader Portrait
+        {/* 9 Arched Member Frames Grid
+            - Mobile (< md): 3 columns x 3 rows (balanced 3x3)
+            - Desktop (>= md): 10-column grid (Row 1: 5 cards across; Row 2: 4 cards centered with col-start-2)
+        */}
+        <div className="w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl">
+          <div className="grid grid-cols-3 md:grid-cols-10 gap-2.5 sm:gap-3.5 md:gap-4 lg:gap-5 xl:gap-6 justify-items-center items-end">
+            {MEMBERS_DATA.map((member, index) => {
+              // On desktop 10-col grid:
+              // Index 0..4 (Row 1): col-span-2 each (5 cards = 10 cols)
+              // Index 5 (Row 2 first item): col-start-2 col-span-2 (offsets by 1 col, centering 4 cards: cols 2-3, 4-5, 6-7, 8-9)
+              // Index 6..8: col-span-2 each
+              const colClass =
+                index === 5
+                  ? 'col-span-1 md:col-start-2 md:col-span-2'
+                  : 'col-span-1 md:col-span-2';
+
+              return (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.04 }}
+                  whileHover={{ y: -6 }}
+                  onClick={() => handleCardClick(member)}
+                  className={`group w-full max-w-[170px] sm:max-w-[190px] md:max-w-none flex flex-col items-center cursor-pointer select-none ${colClass}`}
+                >
+                  {/* Arched Photo Frame (Dome top, vertical sides, dark blue outline) */}
+                  <div className="relative aspect-[3/3.7] w-full rounded-t-[36px] sm:rounded-t-[48px] md:rounded-t-[56px] lg:rounded-t-[68px] overflow-hidden border-[2.2px] sm:border-[2.6px] border-[#0a235c] bg-[#e6f1fd]/80 shadow-sm transition-all duration-300 group-hover:shadow-[0_8px_20px_rgba(10,35,92,0.25)]">
                     <img
                       src={member.image}
                       alt={`${member.name} - ${member.position}`}
@@ -245,23 +223,23 @@ export const AboutUnion: React.FC = React.memo(() => {
                           encodeURIComponent(member.name);
                       }}
                     />
-                  )}
 
-                  {/* Gentle hover shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a235c]/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </div>
+                    {/* Gentle hover shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a235c]/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
 
-                {/* Dark Blue Base / Plinth with Member Name & Position */}
-                <div className="relative z-10 -mt-2 sm:-mt-2.5 w-[104%] sm:w-[106%] px-2 sm:px-2.5 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-[#0a235c] text-white shadow-[0_4px_12px_rgba(10,35,92,0.35)] border border-[#0d2f81]/40 flex flex-col items-center justify-center text-center transition-all duration-300 group-hover:bg-[#0c2e76] group-hover:shadow-[0_6px_18px_rgba(10,35,92,0.5)]">
-                  <span className="font-serif font-bold text-white text-[11px] sm:text-xs md:text-[11px] lg:text-[12.5px] xl:text-[13.5px] leading-tight tracking-tight block truncate w-full">
-                    {member.name}
-                  </span>
-                  <span className="font-sans font-semibold text-blue-200 text-[8px] sm:text-[9px] md:text-[8px] lg:text-[9.5px] xl:text-[10.5px] uppercase tracking-wider block mt-0.5 leading-tight truncate w-full">
-                    {member.position}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+                  {/* Dark Blue Base / Plinth with Member Name & Position */}
+                  <div className="relative z-10 -mt-2 sm:-mt-2.5 w-[104%] sm:w-[106%] px-1.5 sm:px-2.5 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-[#0a235c] text-white shadow-[0_4px_12px_rgba(10,35,92,0.35)] border border-[#0d2f81]/40 flex flex-col items-center justify-center text-center transition-all duration-300 group-hover:bg-[#0c2e76] group-hover:shadow-[0_6px_18px_rgba(10,35,92,0.5)]">
+                    <span className="font-serif font-bold text-white text-[10px] sm:text-xs md:text-[11px] lg:text-[12.5px] xl:text-[13.5px] leading-tight tracking-tight block truncate w-full">
+                      {member.name}
+                    </span>
+                    <span className="font-sans font-semibold text-blue-200 text-[7px] sm:text-[8.5px] md:text-[8px] lg:text-[9.5px] xl:text-[10.5px] uppercase tracking-wider block mt-0.5 leading-tight truncate w-full">
+                      {member.position}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -298,17 +276,11 @@ export const AboutUnion: React.FC = React.memo(() => {
               <div className="flex flex-col items-center text-center">
                 {/* Photo in arched frame */}
                 <div className="w-28 h-36 rounded-t-full overflow-hidden border-2 border-[#0a235c] bg-slate-100 shadow-md mb-4">
-                  {selectedMember.image ? (
-                    <img
-                      src={selectedMember.image}
-                      alt={selectedMember.name}
-                      className="w-full h-full object-cover object-[center_16%]"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-blue-100">
-                      <Heart className="w-10 h-10 text-blue-600 fill-blue-600" />
-                    </div>
-                  )}
+                  <img
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className="w-full h-full object-cover object-[center_16%]"
+                  />
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-100 text-[#0a235c] text-[11px] font-black uppercase tracking-wider border border-blue-300 mb-1.5">
