@@ -19,8 +19,8 @@ export const CollegeSection: React.FC = () => {
       </div>
 
       {/* Main Content Overlay - Positioned on the left open-sky area (100vh) */}
-      <div className="relative z-10 w-full min-h-screen min-h-[100dvh] flex items-center pt-8 sm:pt-12 md:pt-14 pb-24 sm:pb-28 md:pb-32 lg:pb-36">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-14 lg:px-20 w-full -translate-y-6 sm:-translate-y-10 md:-translate-y-14 lg:-translate-y-16">
+      <div className="relative z-10 w-full min-h-screen min-h-[100dvh] flex items-center py-10 sm:py-14 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-14 lg:px-20 w-full -translate-y-2 sm:-translate-y-4 md:-translate-y-6 lg:-translate-y-7">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
