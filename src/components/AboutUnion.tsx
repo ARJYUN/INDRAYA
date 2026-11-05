@@ -120,7 +120,7 @@ export const AboutUnion: React.FC = React.memo(() => {
 
       {/* Foreground Content */}
       <div className="relative z-10 w-full min-h-[640px] sm:min-h-[720px] md:min-h-[800px] lg:min-h-[860px] flex flex-col items-center justify-between pt-14 sm:pt-16 md:pt-20 lg:pt-24 pb-24 sm:pb-32 md:pb-40 px-4 sm:px-8 md:px-12 lg:px-18 xl:px-24">
-        {/* Title Block with 3 radiating dash marks and tapered swoosh underline */}
+        {/* Title Block with tapered swoosh underline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,43 +128,10 @@ export const AboutUnion: React.FC = React.memo(() => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="flex flex-col items-center text-center mb-8 sm:mb-11 md:mb-13"
         >
-          <div className="flex items-center justify-center">
-            {/* 3 Radiating Dash Accent Marks on the left */}
-            <svg
-              viewBox="0 0 54 44"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 sm:w-7 md:w-8 lg:w-9 h-auto text-[#0a235c] inline-block mr-2 sm:mr-3 -translate-y-1 sm:-translate-y-1.5 select-none"
-              aria-hidden="true"
-            >
-              {/* Top slanted dash */}
-              <path
-                d="M16 6 L38 20"
-                stroke="currentColor"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-              {/* Middle horizontal dash */}
-              <path
-                d="M4 22 L26 22"
-                stroke="currentColor"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-              {/* Bottom slanted dash */}
-              <path
-                d="M12 38 L34 28"
-                stroke="currentColor"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-            </svg>
-
-            {/* Title Text */}
-            <h2 className="font-serif italic font-black text-[#021849] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-none">
-              Union Members
-            </h2>
-          </div>
+          {/* Title Text */}
+          <h2 className="font-serif italic font-black text-[#021849] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] tracking-tight leading-none">
+            Union Members
+          </h2>
 
           {/* Tapered Curved Underline Swoosh */}
           <svg
