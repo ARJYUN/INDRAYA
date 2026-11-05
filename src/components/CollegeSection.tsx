@@ -114,8 +114,8 @@ export const CollegeSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Cinematic bottom gradient blending into the dark sections below */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[#050505]/30 to-[#050505] pointer-events-none" />
+      {/* Subtle blend into the Team section below */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-[#0a235c]/10 pointer-events-none" />
     </section>
   );
 };
